@@ -52,6 +52,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "ccwordcount"
+version = "0.1.0"
+dependencies = [
+ "clap",
+]
+
+[[package]]
 name = "clap"
 version = "4.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -228,10 +235,3 @@ name = "windows_x86_64_msvc"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
-
-[[package]]
-name = "wordcount"
-version = "0.1.0"
-dependencies = [
- "clap",
-]
