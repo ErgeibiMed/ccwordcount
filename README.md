@@ -24,4 +24,4 @@ You can read more about the Unix Philosophy in the excellent book
  [clap](https://github.com/sharkdp/clap-rs)
 
 # License
-Please read the LICENSE-MIT file in this repository for more information.
+Please read the [LICENSE-MIT](https://github.com/ErgeibiMed/ccwordcount/blob/main/LICENSE.txt) file in this repository for more information.
