@@ -29,8 +29,12 @@ You can read more about the Unix Philosophy in the excellent book
     - w : for number of words in the file
     - m : for number of characters in the file
 
+ - if no flag is provided then it is equivalent to passing the default option - i.e. no options
+   are provided, which is the equivalent to the -l, -w and -c options.
+
 # Example
- cargo run -- -c test.txt // should output : 342190 test.txt
+ cargo run -- -c test.txt  // should output : 342190 test.txt
+ cargo run --  test.txt   //  should output : 7145   58164  342190 test.txt
 
 
 # Dependencies
