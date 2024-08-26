@@ -33,8 +33,8 @@ You can read more about the Unix Philosophy in the excellent book
    are provided, which is the equivalent to the -l, -w and -c options.
 
 # Example
- cargo run -- -c test.txt  // should output : 342190 test.txt
- cargo run --  test.txt   //  should output : 7145   58164  342190 test.txt
+ - cargo run -- -c test.txt  // should output : 342190 test.txt
+ - cargo run --  test.txt   //  should output : 7145   58164  342190 test.txt
 
 
 # Dependencies
