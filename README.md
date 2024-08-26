@@ -22,11 +22,11 @@ You can read more about the Unix Philosophy in the excellent book
 # Usage
  - Cargo run -- -flag filename
  - ccwc -flag filename
- flag is one of the following:
-   c : for number of bytes in the file
-   l : for number of lines in the file
-   w : for number of words in the file
-   m : for number of characters in the file
+ - flag is one of the following:
+  -- c : for number of bytes in the file
+  -- l : for number of lines in the file
+  -- w : for number of words in the file
+  -- m : for number of characters in the file
 
 # Example
  cargo run -- -c test.txt // should output : 342190 test.txt
