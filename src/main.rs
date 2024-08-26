@@ -7,8 +7,8 @@ use std::fs;
 #[command(about = "a wordcount linux command tool clone", long_about = None)]
 struct WordrCount {
 
-    #[arg(required=true)]
-    filename:String,
+    // #[arg(required=true)]
+    // filename:String,
 
     #[command(subcommand)]
     command: Commands,
@@ -16,45 +16,52 @@ struct WordrCount {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-    Count,
-    Lines,
-    Words,
-    Characters,
+    #[command(name="-c")]
+    Count{
+        filename:String,
+    },
+    #[command(name="-l")]
+    Lines{filename:String,},
+    #[command(name="-w")]
+    Words{filename:String,},
+    #[command(name="-m")]
+    Characters{filename:String,},
 
 }
 fn main() {
     let args=WordrCount::parse();
     match args.command {
-        Commands::Count =>{
-            let f= fs::metadata(&args.filename).map_err(|err|
-               eprintln!("could not get metadata of {file_name} because of {err}", file_name= args.filename)
+        Commands::Count{filename} =>{
+            let f= fs::metadata(&filename).map_err(|err|
+                eprintln!("could not get metadata of {file_name} because of {err}", file_name= filename)
             ).unwrap().len();
-            println!(" {f} {file_name}", file_name=args.filename);
+            println!(" {f} {file_name}", file_name=filename);
         },
 
-        Commands::Lines =>{
-             let f= fs::read_to_string(&args.filename).map_err(|err|
-               eprintln!("could not read to string the {file_name} because of {err}", file_name= args.filename)
+        Commands::Lines{filename} =>{
+            let f= fs::read_to_string(&filename).map_err(|err|
+                eprintln!("could not read to string the {file_name} because of {err}", file_name= filename)
             ).unwrap();
-             let lines = f.lines().count();
-            println!(" {lines} {file_name}", file_name=args.filename);
+            let lines = f.lines().count();
+            println!(" {lines} {file_name}", file_name=filename);
         },
-         Commands::Words =>{
-             let f= fs::read_to_string(&args.filename).map_err(|err|
-               eprintln!("could not read to string the {file_name} because of {err}", file_name= args.filename)
+        Commands::Words{filename} =>{
+            let f= fs::read_to_string(&filename).map_err(|err|
+                eprintln!("could not read to string the {file_name} because of {err}", file_name= filename)
             ).unwrap();
-             let words = f.split_whitespace().count();
-            println!(" {words} {file_name}", file_name=args.filename);
+            let words = f.split_whitespace().count();
+            println!(" {words} {file_name}", file_name=filename);
 
         },
-        Commands::Characters =>{
-            let f= fs::read_to_string(&args.filename).map_err(|err|
-                eprintln!("could not read to string the {file_name} because of {err}", file_name= args.filename)
+        Commands::Characters{filename} =>{
+            let f= fs::read_to_string(&filename).map_err(|err|
+                eprintln!("could not read to string the {file_name} because of {err}", file_name= filename)
             ).unwrap();
             let characters = f.chars().count();
-            println!(" {characters} {file_name}", file_name=args.filename);
+            println!(" {characters} {file_name}", file_name=filename);
 
         },
+
 
     }
 }
