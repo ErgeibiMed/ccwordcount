@@ -32,10 +32,15 @@ You can read more about the Unix Philosophy in the excellent book
  - if no flag is provided then it is equivalent to passing the default option - i.e. no options
    are provided, which is the equivalent to the -l, -w and -c options.
 
-# Example
- - cargo run -- -c test.txt  // should output : 342190 test.txt
- - cargo run --  test.txt   //  should output : 7145   58164  342190 test.txt
+ - support being able to read from standard input if no filename is specified
 
+    - cat test.txt | ccwc -l   //   should output : 7145
+
+# Example
+ - cargo run -- -c test.txt   // should output : 342190 test.txt
+ - ccwc -c test.txt           // should output : 342190 test.txt
+ - cargo run -- test.txt     //  should output : 7145   58164  342190 test.txt
+ - ccwc test.txt            //   should output : 7145   58164  342190 test.txt
 
 # Dependencies
  [clap](https://github.com/sharkdp/clap-rs)
