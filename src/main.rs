@@ -37,18 +37,18 @@ fn main() {
             let mut stdin= io::stdin();
             match args.command {
                 Some(Commands::Help)| Some(Commands::Longhelp)=> {
-                    println!("");
+                    println!();
                     println!("a wordcount(wc) linux command tool clone");
-                    println!("");
+                    println!();
                     println!("Usage: ccwc <COMMAND> <FILENAME>");
-                    println!("");
+                    println!();
                     println!("Commands: ");
                     println!("  -c          print the byte counts ");
                     println!("  -l          print the newline counts ");
                     println!("  -w          print the word counts ");
                     println!("  -m          print the character counts ");
                     println!("  -h, help    print this message ");
-                    println!("");
+                    println!();
 
 
                 },
@@ -87,7 +87,7 @@ fn main() {
                 None => {
                     match stdin.read_to_string(&mut data){
                         Ok(_) => {
-                            let (lines,words,bytes)= (data.lines().count(),data.split_whitespace().count(),data.bytes().count());
+                            let (lines,words,bytes)= (data.lines().count(),data.split_whitespace().count(),data.len());
                             println!("   {lines}  {words}  {bytes}  ");
                         }
                         Err(error) => println!("error: {error}"),
@@ -102,18 +102,18 @@ fn main() {
             ).unwrap();
             match args.command {
                 Some(Commands::Help)| Some(Commands::Longhelp)=> {
-                    println!("");
+                    println!();
                     println!("a wordcount(wc) linux command tool clone");
-                    println!("");
+                    println!();
                     println!("Usage: ccwc <COMMAND> <FILENAME>");
-                    println!("");
+                    println!();
                     println!("Commands: ");
                     println!("  -c          print the byte counts ");
                     println!("  -l          print the newline counts ");
                     println!("  -w          print the word counts ");
                     println!("  -m          print the character counts ");
                     println!("  -h, help    print this message ");
-                    println!("");
+                    println!();
 
                 },
 
@@ -130,7 +130,7 @@ fn main() {
                     println!(" {characters} {file_name}", characters = f.chars().count(),file_name=filename);
                 },
                 None => {
-                    let (lines,words,bytes)= (f.lines().count(),f.split_whitespace().count(),f.bytes().count());
+                    let (lines,words,bytes)= (f.lines().count(),f.split_whitespace().count(),f.len());
                     println!("   {lines}  {words}  {bytes}  {file_name}",file_name=filename);
                 },
             }
