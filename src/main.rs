@@ -29,6 +29,21 @@ enum Commands {
 
 
 }
+fn print_help() {
+    println!();
+    println!("a wordcount(wc) linux command tool clone");
+    println!();
+    println!("Usage: ccwc <COMMAND> <FILENAME>");
+    println!();
+    println!("Commands: ");
+    println!("  -c          print the byte counts ");
+    println!("  -l          print the newline counts ");
+    println!("  -w          print the word counts ");
+    println!("  -m          print the character counts ");
+    println!("  -h, help    print this message ");
+    println!();
+
+}
 fn main() {
     let args=WordCount::parse();
     match args.filename{
@@ -36,22 +51,7 @@ fn main() {
             let mut data = String::new();
             let mut stdin= io::stdin();
             match args.command {
-                Some(Commands::Help)| Some(Commands::Longhelp)=> {
-                    println!();
-                    println!("a wordcount(wc) linux command tool clone");
-                    println!();
-                    println!("Usage: ccwc <COMMAND> <FILENAME>");
-                    println!();
-                    println!("Commands: ");
-                    println!("  -c          print the byte counts ");
-                    println!("  -l          print the newline counts ");
-                    println!("  -w          print the word counts ");
-                    println!("  -m          print the character counts ");
-                    println!("  -h, help    print this message ");
-                    println!();
-
-
-                },
+                Some(Commands::Help)| Some(Commands::Longhelp)=> {print_help();},
                 Some(Commands::Count) => {
                     match stdin.read_to_string(&mut data){
                         Ok(_) => {
@@ -101,21 +101,7 @@ fn main() {
                 eprintln!("could not read to string the {file_name} because of {err}", file_name= filename)
             ).unwrap();
             match args.command {
-                Some(Commands::Help)| Some(Commands::Longhelp)=> {
-                    println!();
-                    println!("a wordcount(wc) linux command tool clone");
-                    println!();
-                    println!("Usage: ccwc <COMMAND> <FILENAME>");
-                    println!();
-                    println!("Commands: ");
-                    println!("  -c          print the byte counts ");
-                    println!("  -l          print the newline counts ");
-                    println!("  -w          print the word counts ");
-                    println!("  -m          print the character counts ");
-                    println!("  -h, help    print this message ");
-                    println!();
-
-                },
+                Some(Commands::Help)| Some(Commands::Longhelp)=> {print_help(); },
 
                 Some(Commands::Count) =>{
                     println!(" {len} {file_name}",len = f.len(), file_name=filename);
